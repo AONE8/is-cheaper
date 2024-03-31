@@ -1,0 +1,43 @@
+.input-container {
+  position: relative;
+  display: flex;
+  align-self: stretch;
+  font-size: 1.6rem;
+  margin-bottom: 3rem;
+}
+
+label {
+  position: absolute;
+  left: 4rem;
+  top: 0;
+  display: inline-block;
+  margin: 1.5rem 0;
+  font-family: inherit;
+  font-size: inherit;
+  background-color: #fff;
+
+  transition: all 0.3s ease;
+}
+
+input,
+input:focus {
+  border: 2px solid black;
+  height: 4.8rem;
+  flex: 0 0 100%;
+  border-radius: 9px;
+  padding: 0 4rem;
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+}
+
+input::placeholder {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label {
+  transform: translate(-3rem, -2.5rem) scale(0.8);
+  padding: 0 0.5rem;
+}

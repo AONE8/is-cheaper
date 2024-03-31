@@ -1,0 +1,35 @@
+.header {
+  grid-column: 1 / -1;
+  display: flex;
+  padding: 1rem 0;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.logo-container {
+  text-decoration: none;
+  color: black;
+}
+
+.logo-container > figure {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.logo-container > figure > figcaption {
+  font-size: 4.8rem;
+  font-weight: 700;
+  font-family: "Signika", sans-serif;
+}
+
+.logo-container img {
+  height: 10rem;
+}

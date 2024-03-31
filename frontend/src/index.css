@@ -1,0 +1,28 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+}
+
+#root {
+  margin: 0 auto;
+  width: 90vw;
+  height: 100vh;
+  display: grid;
+
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 1fr 5fr;
+  gap: 3rem;
+}
