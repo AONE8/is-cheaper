@@ -1,6 +1,7 @@
 package dev.amalyshko.backend.controllers;
 
 import dev.amalyshko.backend.models.User;
+import dev.amalyshko.backend.payload.JwtResponse;
 import dev.amalyshko.backend.payload.LoginRequest;
 import dev.amalyshko.backend.payload.MessageResponse;
 import dev.amalyshko.backend.payload.SignupRequest;
@@ -60,7 +61,7 @@ public class AuthController {
 //                userDetails.getEmail(),
 //                roles));
 
-        return ResponseEntity.ok(jwt);
+        return ResponseEntity.ok(new JwtResponse(jwt, username));
     }
 
     @PostMapping("/signup")
@@ -76,7 +77,7 @@ public class AuthController {
                     .badRequest()
                     .body(new MessageResponse("Error: Email is already in use!"));
         }
-        
+
         User user = new User(signUpRequest.getUsername(),
                 signUpRequest.getEmail(),
                 encoder.encode(signUpRequest.getPassword()));
@@ -85,7 +86,5 @@ public class AuthController {
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
-
-
 
 }
