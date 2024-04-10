@@ -1,6 +1,9 @@
 package dev.amalyshko.backend.controllers;
 
+import dev.amalyshko.backend.models.User;
 import dev.amalyshko.backend.payload.LoginRequest;
+import dev.amalyshko.backend.payload.MessageResponse;
+import dev.amalyshko.backend.payload.SignupRequest;
 import dev.amalyshko.backend.repository.UserRepository;
 import dev.amalyshko.backend.security.jwt.JwtUtils;
 import dev.amalyshko.backend.security.services.UserDetailsImpl;
@@ -11,7 +14,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -59,6 +61,29 @@ public class AuthController {
 //                roles));
 
         return ResponseEntity.ok(jwt);
+    }
+
+    @PostMapping("/signup")
+    public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
+        if (userRepository.existsByUsername(signUpRequest.getUsername())) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: Username is already taken!"));
+        }
+
+        if (userRepository.existsByEmail(signUpRequest.getEmail())) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: Email is already in use!"));
+        }
+        
+        User user = new User(signUpRequest.getUsername(),
+                signUpRequest.getEmail(),
+                encoder.encode(signUpRequest.getPassword()));
+
+        userRepository.save(user);
+
+        return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
 
 

@@ -22,4 +22,10 @@ public class User {
     private String authorities;
 
     private List<Product> products;
+
+    public User(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
 }
