@@ -6,8 +6,10 @@ import {
 import Error404 from "./pages/Error404";
 import RootLayout from "./pages/Root";
 import Auth from "./pages/Auth/Auth";
-
-const isAuth = false;
+import { useContext } from "react";
+import AuthContext from "./store/auth-context";
+import Main from "./pages/Main/Main";
+import History from "./pages/History";
 
 const authRouter = createBrowserRouter([
   {
@@ -15,10 +17,13 @@ const authRouter = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <Error404 />,
     children: [
-      { index: true, element: "" }, // path: ""
-      { path: "products", element: "" },
-      { path: "products/:productId", element: "" },
+      { index: true, element: <Main /> },
+      { path: "history", element: <History /> },
     ],
+  },
+  {
+    path: "/authentication",
+    element: <Navigate to="/" replace />,
   },
 ]);
 
@@ -38,7 +43,10 @@ const commonRouter = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={isAuth ? authRouter : commonRouter} />;
+  const authCtx = useContext(AuthContext);
+  return (
+    <RouterProvider router={authCtx.isLoggedIn ? authRouter : commonRouter} />
+  );
 }
 
 export default App;

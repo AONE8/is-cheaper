@@ -1,0 +1,35 @@
+.tooltip {
+  position: absolute;
+  width: 100%;
+  background-color: #fff;
+  border: 2px solid black;
+  top: 5.4rem;
+  border-radius: 9px;
+  padding: 1rem 2rem;
+  max-height: 20vh;
+  overflow-y: auto;
+  z-index: 100;
+  transition: all 0.6s;
+  display: block;
+}
+
+.tooltip > ul {
+  list-style: none;
+}
+
+.tooltip > ul > li > input {
+  display: none;
+}
+
+.tooltip > ul > li > label {
+  display: block;
+  width: 100%;
+}
+
+.tooltip > ul > li > label:hover {
+  background-color: aqua;
+}
+
+.tooltip > ul > li > input:checked + label {
+  background-color: aqua;
+}

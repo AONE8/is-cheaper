@@ -1,4 +1,4 @@
-package ua.andriimalyshko.backend;
+package dev.amalyshko.backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

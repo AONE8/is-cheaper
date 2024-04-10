@@ -1,0 +1,70 @@
+.input-container {
+  position: relative;
+  display: flex;
+  align-self: stretch;
+  font-size: 1.6rem;
+  margin-bottom: 3rem;
+  border: 2px solid black;
+  border-radius: 9px;
+  padding: 2rem 1rem;
+}
+
+.label {
+  position: absolute;
+  display: block;
+  transform: translate(1rem, -150%) scale(0.8);
+  background-color: #fff;
+  padding: 0 0.5rem;
+}
+
+.checkbox-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-evenly;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+
+.checkbox-list > li {
+  display: block;
+}
+
+.checkbox-list > li > input {
+  display: none;
+}
+
+.checkbox-list > li > label {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.checkbox-list > li > label > span {
+  content: "";
+  display: block;
+  position: relative;
+  border: 0.5px solid black;
+  border-radius: 3px;
+  height: 2rem;
+  width: 2rem;
+}
+
+.checkbox-list > li > label > span::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: black;
+  height: 0%;
+  width: 0%;
+  border-radius: 1px;
+  transform: translate(-50%, -50%);
+}
+
+.checkbox-list > li > input:checked + label > span::after {
+  height: 75%;
+  width: 75%;
+  transition: all 0.2s ease-in-out;
+}

@@ -1,4 +1,4 @@
-package ua.andriimalyshko.backend;
+package dev.amalyshko.backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

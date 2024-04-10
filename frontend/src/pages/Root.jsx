@@ -1,11 +1,14 @@
 import { Outlet } from "react-router-dom";
+import MainNavigation from "../components/MainNavigation/MainNavigation";
+import MainWrapper from "../components/MainWrapper/MainWrapper";
 
 export default function RootLayout() {
   return (
-    <div>
-      <main>
+    <>
+      <MainNavigation />
+      <MainWrapper>
         <Outlet />
-      </main>
-    </div>
+      </MainWrapper>
+    </>
   );
 }
