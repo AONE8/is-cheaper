@@ -6,9 +6,12 @@ import dev.amalyshko.backend.payload.LoginRequest;
 import dev.amalyshko.backend.payload.MessageResponse;
 import dev.amalyshko.backend.payload.SignupRequest;
 import dev.amalyshko.backend.repository.UserRepository;
+import dev.amalyshko.backend.security.jwt.AuthEntryPointJwt;
 import dev.amalyshko.backend.security.jwt.JwtUtils;
 import dev.amalyshko.backend.security.services.UserDetailsImpl;
 import jakarta.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -25,6 +28,8 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
+
+    private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
 
     @Autowired
     AuthenticationManager authenticationManager;
@@ -43,6 +48,8 @@ public class AuthController {
 
         String username = userRepository.findByEmail(loginRequest.getEmail())
                 .orElseThrow(() -> new Exception("Email not found")).getUsername();
+
+        logger.info("Username: '{}, email: {}'", username, loginRequest.getEmail());
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(username, loginRequest.getPassword()));

@@ -30,7 +30,7 @@ export default function Auth() {
         </Button>
       </header>
       <main className={AuthHeader.main}>
-        <Form type={formStatus} />
+        <Form type={formStatus} setFormtatus={setFormtatus} />
       </main>
     </>
   );

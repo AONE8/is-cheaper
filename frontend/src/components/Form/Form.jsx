@@ -7,8 +7,10 @@ import SignUpForm from "./SignUp/SignUp";
 import AuthContext from "../../store/auth-context";
 import { useNavigate } from "react-router-dom";
 import FilterForm from "./Filter/Filter";
+import OPTIONS, { OPTIONS_VALUES } from "../../util/constants";
+import { postProds } from "../../util/searchProds";
 
-export default function Form({ type }) {
+export default function Form({ type, setFormtatus }) {
   const authCtx = useContext(AuthContext);
   const navigate = useNavigate();
   const formRef = useRef();
@@ -41,36 +43,60 @@ export default function Form({ type }) {
       console.log(data);
 
       authCtx.onLogin(data.email, data.password);
-      navigate("/");
+      return;
+    }
+
+    if (type === "signup") {
+      const data = Object.fromEntries(formData.entries());
+      authCtx.onSignup(data.username, data.email, data.password);
+      setFormtatus("login");
       return;
     }
 
     if (type === "filter" || !type) {
-      const data = Object.fromEntries(formData.entries());
-      data["battery-capacity"] = formData.getAll("battery-capacity");
-      data["display-type"] = formData.getAll("display-type");
-      data["gpu-type"] = formData.getAll("gpu-type");
-      data["processor-coret"] = formData.getAll("processor-coret");
-      data["ram"] = formData.getAll("ram");
-      data["ram-type"] = formData.getAll("ram-type");
-      data["screen-size"] = formData.getAll("screen-size");
+      const data = {};
+      // data["battery-capacity"] = formData.getAll("battery-capacity");
+      // data["display-type"] = formData.getAll("display-type");
+      // data["gpu-type"] = formData.getAll("gpu-type");
+      // data["processor-coret"] = formData.getAll("processor-coret");
+      // data["ram"] = formData.getAll("ram");
+      // data["ram-type"] = formData.getAll("ram-type");
+      // data["screen-size"] = formData.getAll("screen-size");
 
-      console.log(data);
+      for (const key in OPTIONS_VALUES) {
+        if (formData.getAll(key).length !== 0 && formData.getAll(key)[0]) {
+          let items = Array.from(formData.getAll(key));
+          items = items.map((el) => {
+            const index = OPTIONS[key].indexOf(el);
+            if (index !== -1) {
+              return OPTIONS_VALUES[key][index];
+            }
+            return el;
+          });
 
-      for (const key in formRef.current) {
-        if (
-          formRef.current[key] &&
-          Object.hasOwnProperty.call(formRef.current[key], "value")
-        ) {
-          formRef.current[key].value = "";
-        }
-        if (
-          formRef.current[key] &&
-          Object.hasOwnProperty.call(formRef.current[key], "checked")
-        ) {
-          formRef.current[key].checked = false;
+          data[key] = items;
+          console.log(data[key]);
         }
       }
+
+      console.log(JSON.stringify(data));
+
+      postProds(data, handleReset.bind(null, event));
+
+      // for (const key in formRef.current) {
+      //   if (
+      //     formRef.current[key] &&
+      //     Object.hasOwnProperty.call(formRef.current[key], "value")
+      //   ) {
+      //     formRef.current[key].value = "";
+      //   }
+      //   if (
+      //     formRef.current[key] &&
+      //     Object.hasOwnProperty.call(formRef.current[key], "checked")
+      //   ) {
+      //     formRef.current[key].checked = false;
+      //   }
+      // }
     }
   }
 

@@ -1,4 +1,5 @@
-.filter-section {
+.filter-section,
+.result-section {
   display: flex;
   width: 100%;
   align-items: center;
@@ -6,4 +7,6 @@
 }
 
 .result-section {
+  margin-top: 10rem;
+  margin-bottom: 5rem;
 }

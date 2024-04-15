@@ -1,5 +1,5 @@
 const OPTIONS = {
-  BRANDS: [
+  producer: [
     "ASUS",
     "Acer",
     "Apple",
@@ -13,7 +13,7 @@ const OPTIONS = {
     "Samsung",
     "Xiaomi",
   ],
-  PROCESSORS: [
+  processor: [
     "Intel Core i7",
     "Intel Core i5",
     "Intel Core i3",
@@ -30,8 +30,8 @@ const OPTIONS = {
     "Intel Celeron",
     "Intel N-series",
   ],
-  DIAAGONALS: ['12,9"', '13"', '14"', '15"-16"', '17"', '18"'],
-  RAM: [
+  20861: ['12,9"', '13"', '14"', '15"-16"', '17"', '18"'],
+  20863: [
     "10 - 12 ГБ",
     "16 - 24 ГБ",
     "32 ГБ і більше",
@@ -39,7 +39,7 @@ const OPTIONS = {
     "6 - 8 ГБ",
     "3 ГБ і менше",
   ],
-  SSD_STORAGE: [
+  "obyom-ssd": [
     "1 ТБ",
     "128 ГБ",
     "2 ТБ і більше",
@@ -56,23 +56,23 @@ const OPTIONS = {
     "750 ГБ",
     "768 ГБ",
   ],
-  GPU_TYPE: ["Інтегрована", "Дискретна"],
-  DISPLAY_TYPE: ["IPS", "Liquid Retina XDR", "Mini LED", "OLED", "TN", "VA"],
-  CORES_COUNT: ["4", "6", "8", "10", "12"],
-  RAM_TYPE: ["DDR3", "DDR4", "DDR5"],
-  PROD_YEAR: ["2020", "2021", "2022", "2023", "2024"],
-  DISPLAY_RATE: [
-    "120 Гц",
-    "144 Гц",
-    "165 Гц",
-    "240 Гц",
-    "250 Гц",
-    "300 - 360 Гц",
-    "480 Гц",
-    "60 Гц",
-    "90 - 100 Гц",
-  ],
-  BATTERY_CAP: [
+  73143: ["Інтегрована", "Дискретна"],
+  36519: ["IPS", "Liquid Retina XDR", "Mini LED", "OLED", "TN", "VA"],
+  72566: ["4", "6", "8", "10", "12"],
+  111764: ["DDR3", "DDR4", "DDR5"],
+  "god-vipuska-255456": ["2020", "2021", "2022", "2023", "2024"],
+  // "chastota-obnovleniya-ekrana": [
+  //   "120 Гц",
+  //   "144 Гц",
+  //   "165 Гц",
+  //   "240 Гц",
+  //   "250 Гц",
+  //   "300 - 360 Гц",
+  //   "480 Гц",
+  //   "60 Гц",
+  //   "90 - 100 Гц",
+  // ],
+  "emkost-akkumulyatora-243558": [
     "30 — 50 Вт * год",
     "51 — 70 Вт·год",
     "71 — 90 Вт·год",
@@ -83,7 +83,87 @@ const OPTIONS = {
 
 export default OPTIONS;
 
-/*
+export const TRANSLATING = {
+  BRANDS: "producer",
+  PROCESSORS: "processor",
+  DIAAGONALS: "20861",
+  RAM: "20863",
+  SSD_STORAGE: "obyom-ssd",
+  GPU_TYPE: "73143",
+  DISPLAY_TYPE: "36519",
+  CORES_COUNT: "72566",
+  RAM_TYPE: "111764",
+  PROD_YEAR: "god-vipuska-255456",
+  DISPLAY_RATE: "chastota-obnovleniya-ekrana",
+  BATTERY_CAP: "emkost-akkumulyatora-243558",
+};
 
-
- */
+export const OPTIONS_VALUES = {
+  producer: [
+    "acer",
+    "apple",
+    "asus",
+    "dell",
+    "gigabyte",
+    "hp-hewlett-packard",
+    "huawei",
+    "lenovo",
+    "msi",
+  ],
+  processor: [
+    "intel_core_i7",
+    "intel_core_i5",
+    "intel_core_i3",
+    "amd-ryzen-7",
+    "amd-ryzen-5",
+    "amd-ryzen-3",
+    "6276",
+    "9982",
+    "intel_core_i9",
+    "amd-ryzen-9",
+    "m1",
+    "m2",
+    "m3",
+    "6279",
+    "intel-n-series",
+  ],
+  20861: ["13-i-menshe", "6305", "6306", "6308", "6310", "18-i-bolshe"],
+  20863: ["10-12-gb", "48089", "25207", "25206", "6-8-gb", "25205"],
+  "obyom-ssd": [
+    "1-tb-4280776",
+    "128-gb",
+    "2-tb-i-bolshe",
+    "256-gb",
+    "480-gb",
+    "500-gb",
+    "512-gb",
+    "960-gb",
+    "120-gb-i-menshe",
+    "130-gb",
+    "525-gb",
+    "620-gb",
+    "640-gb",
+    "750-gb",
+    "768-gb",
+  ],
+  73143: ["326607", "326613"],
+  36519: [
+    "ips",
+    "liquid-retina-xdr",
+    "mini-led",
+    "oled-4280782",
+    "tn-4280794",
+    "va",
+  ],
+  72566: ["305312", "1167447", "1049913", "3640091", "3395827"],
+  111764: ["ddr3", "686296", "ddr5"],
+  "god-vipuska-255456": ["4489713", "4489716", "4489719", "4489722", "4602366"],
+  // "chastota-obnovleniya-ekrana": [],
+  "emkost-akkumulyatora-243558": [
+    "31-50-vt-ch",
+    "51-70-vt-ch",
+    "71-90-vt-ch",
+    " 91-vt-ch-i-bolshe",
+    "do-30-vt-ch",
+  ],
+};

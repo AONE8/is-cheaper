@@ -23,6 +23,6 @@ body {
   display: grid;
 
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 1fr 5fr;
+  grid-template-rows: 15rem 1fr;
   gap: 3rem;
 }

@@ -1,0 +1,96 @@
+.result {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  flex-wrap: wrap;
+  border: 9px solid black;
+  border-radius: 18px;
+  padding-top: 4.2rem;
+  padding-bottom: 3.2rem;
+  align-items: center;
+  gap: 2.4rem;
+  width: 80rem;
+}
+
+.result > h3 {
+  font-size: 3.2rem;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  background-color: #fff;
+  padding: 2rem;
+}
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+  width: 70%;
+}
+
+.image-container img {
+  width: 70%;
+}
+
+.image-container span {
+  font-size: 2.4rem;
+  text-wrap: wrap;
+  text-align: center;
+}
+
+.price-container span {
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.link-container a:link,
+.link-container a:visited {
+  text-decoration: none;
+  color: black;
+  display: inline-block;
+  font-size: 1.6rem;
+  font-weight: 500;
+
+  padding: 1rem 2rem;
+  border-radius: 9px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+  transition: all 0.6s;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 1px 3px black;
+}
+
+.link-container a::after {
+  content: "";
+  display: block;
+  background-image: linear-gradient(#d45b03, #093e49);
+  transform: translateY(130%) scale(2);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  transform-origin: bottom;
+  transition: all 0.6s;
+}
+
+.link-container a:hover::after,
+.link-container a:active::after {
+  content: "";
+  transform: translateY(-75%) scale(3);
+  width: 100%;
+}
+
+.link-container a:hover,
+.link-container a:active {
+  color: white;
+}
+
+.link-container a:hover {
+  box-shadow: 0 0 1px 3px transparent;
+}

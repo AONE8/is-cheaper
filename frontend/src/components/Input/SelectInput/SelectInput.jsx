@@ -41,7 +41,6 @@ export default function SelectInput({ name, classes, label, options }) {
         value={value}
         onChange={handleChange}
         placeholder=""
-        required
       />
       <label htmlFor={name}>{label}</label>
       {isVisible && (
