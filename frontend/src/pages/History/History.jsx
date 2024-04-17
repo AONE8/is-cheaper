@@ -40,7 +40,7 @@ export default function History() {
 }
 
 export async function loader() {
-  const response = await fetch("http://localhost:8080/api/products/history", {
+  const response = await fetch(`${REACT_APP_BACKEND_API}/products/history`, {
     headers: {
       Authorization: "Bearer " + localStorage.getItem("token"),
     },
