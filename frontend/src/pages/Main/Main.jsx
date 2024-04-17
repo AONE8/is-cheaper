@@ -130,7 +130,7 @@ export async function action({ request }) {
   }
 
   try {
-    const response = await fetch("http://localhost:8080/api/products/search", {
+    const response = await fetch(`${REACT_APP_BACKEND_API}/products/search`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("token"),
