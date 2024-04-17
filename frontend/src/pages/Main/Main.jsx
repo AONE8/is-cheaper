@@ -65,7 +65,6 @@ export default function Main() {
 
     setInputSelectState(resetState);
 
-    console.dir(event.target);
     for (const key in event.target) {
       if (
         event.target[key] &&
@@ -127,11 +126,8 @@ export async function action({ request }) {
       });
 
       data[key] = items;
-      console.log(data[key]);
     }
   }
-
-  console.log(JSON.stringify(data));
 
   try {
     const response = await fetch("http://localhost:8080/api/products/search", {
@@ -159,7 +155,6 @@ export async function action({ request }) {
 
     return message;
   } catch (error) {
-    console.log(error);
     throw json({ message: error.message }, { status: 500 });
   }
 }
