@@ -72,14 +72,13 @@ export default function Auth() {
 export async function action({ request }) {
   const searchParams = new URL(request.url).searchParams;
   const mode = searchParams.get("mode") || "login";
-  console.log(mode);
+
   const data = await request.formData();
-  console.log(data.get("email"));
+
   let authData = {};
 
   if (mode === "login") {
     if (data.get("password").length < 5) {
-      console.log("not passw");
       return json(
         { error: { password: "Password must have more 5 symbols." } },
         { status: 200 }
@@ -116,7 +115,6 @@ export async function action({ request }) {
 
   if (mode === "signup") {
     if (data.get("password").length < 5) {
-      console.log("not passw");
       return json(
         { error: { password: "Password must have more 5 symbols." } },
         { status: 200 }
