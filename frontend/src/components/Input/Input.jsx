@@ -3,7 +3,15 @@ import OPTIONS from "../../util/constants";
 import SelectInput from "./SelectInput/SelectInput";
 import CheckInput from "./CheckInput/CHeckInput";
 
-export default function Input({ label, type, name, options, options_value }) {
+export default function Input({
+  label,
+  type,
+  name,
+  options,
+  options_value,
+  inputSelectState,
+  setInputSelectState,
+}) {
   if (type === "select") {
     return (
       <SelectInput
@@ -11,6 +19,8 @@ export default function Input({ label, type, name, options, options_value }) {
         label={label}
         classes={inputClasses}
         options={options}
+        inputSelectState={inputSelectState}
+        setInputSelectState={setInputSelectState}
       />
     );
   }

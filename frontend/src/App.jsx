@@ -1,52 +1,36 @@
-import {
-  Navigate,
-  RouterProvider,
-  createBrowserRouter,
-} from "react-router-dom";
-import Error404 from "./pages/Error404";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Error from "./pages/Error";
 import RootLayout from "./pages/Root";
-import Auth from "./pages/Auth/Auth";
-import { useContext } from "react";
-import AuthContext from "./store/auth-context";
-import Main from "./pages/Main/Main";
-import History from "./pages/History";
+import Auth, { action as authAction } from "./pages/Auth/Auth";
+import Main, { action as mainAction } from "./pages/Main/Main";
+import History, { loader as historyLoader } from "./pages/History/History";
+import { getJWT } from "./util/jwt-utils";
+import { action as logoutAction } from "./pages/Logout";
 
-const authRouter = createBrowserRouter([
+const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
-    errorElement: <Error404 />,
+    errorElement: <Error />,
+    id: "root",
+    loader: getJWT,
     children: [
-      { index: true, element: <Main /> },
-      { path: "history", element: <History /> },
+      { index: true, element: <Main />, action: mainAction },
+      { path: "history", element: <History />, loader: historyLoader },
+      { path: "logout", action: logoutAction },
     ],
   },
   {
     path: "/authentication",
-    element: <Navigate to="/" replace />,
-  },
-]);
-
-const commonRouter = createBrowserRouter([
-  {
-    path: "*",
-    element: <Error404 />,
-  },
-  {
-    index: true,
-    element: <Navigate to="/authentication" replace />,
-  },
-  {
-    path: "/authentication",
     element: <Auth />,
+    action: authAction,
+    loader: getJWT,
+    errorElement: <Error />,
   },
 ]);
 
 function App() {
-  const authCtx = useContext(AuthContext);
-  return (
-    <RouterProvider router={authCtx.isLoggedIn ? authRouter : commonRouter} />
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

@@ -1,8 +1,8 @@
 const OPTIONS = {
   producer: [
-    "ASUS",
     "Acer",
     "Apple",
+    "ASUS",
     "Dell",
     "Gigabyte",
     "HP",

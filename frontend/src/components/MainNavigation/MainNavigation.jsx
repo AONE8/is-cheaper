@@ -1,26 +1,14 @@
 import Button from "../Button/Button";
-import logo from "../../assets/isCheaperLogo.svg";
-import { NavLink, useNavigate } from "react-router-dom";
+import logo from "../../assets/isCheaperLogo.png";
+import { Form, NavLink, redirect, useFetcher } from "react-router-dom";
 import MainNavClasses from "./MainNavigation.module.css";
-import { useContext } from "react";
-import { AuthContext } from "../../store/auth-context";
 
 export default function MainNavigation() {
-  const authCtx = useContext(AuthContext);
-  const navigate = useNavigate();
-
-  function handleClick() {
-    authCtx.onLogout();
-    navigate("/");
-  }
+  const fetcher = useFetcher();
 
   return (
     <header className={MainNavClasses.header}>
-      <NavLink
-        to="/authentication"
-        className={MainNavClasses["logo-container"]}
-        end
-      >
+      <NavLink to="/" className={MainNavClasses["logo-container"]} end>
         <figure>
           <img src={logo} alt="isCheaper Logo" />
           <figcaption>isCheaper</figcaption>
@@ -52,9 +40,9 @@ export default function MainNavigation() {
           </li>
         </ul>
 
-        <Button type="button" onClick={handleClick}>
-          Logout
-        </Button>
+        <Form method="post" action="/logout">
+          <Button>Logout</Button>
+        </Form>
       </nav>
     </header>
   );

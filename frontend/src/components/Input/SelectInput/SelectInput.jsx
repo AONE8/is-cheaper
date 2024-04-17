@@ -10,26 +10,27 @@ function filterOptions(option) {
     brand.toLowerCase() !== option.toLowerCase();
 }
 
-export default function SelectInput({ name, classes, label, options }) {
-  const [value, setValue] = useState("");
-  // const [isVisible, setIsVisible] = useState(false);
+export default function SelectInput({
+  name,
+  classes,
+  label,
+  options,
+  inputSelectState,
+  setInputSelectState,
+}) {
+  const value = inputSelectState[name];
 
   let isVisible =
     options.some(filterOptions(value)) && value !== "" && value !== valueOption;
 
-  // console.log(
-  //   `value: ${value}, valueOPtion: ${valueOption}, isVisible: ${isVisible}`
-  // );
-
   function handleChange(event) {
     const enteredText = event.target.value;
-    setValue(enteredText);
+    setInputSelectState((prev) => ({ ...prev, [name]: enteredText }));
   }
 
   function handleOptionPick(event) {
-    valueOption = event.target.value;
-
-    setValue(valueOption);
+    const selectedOption = event.target.value;
+    setInputSelectState((prev) => ({ ...prev, [name]: selectedOption }));
   }
 
   return (

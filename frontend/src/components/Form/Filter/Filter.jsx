@@ -1,11 +1,7 @@
-import { useContext } from "react";
-import Button from "../../Button/Button";
 import Input from "../../Input/Input";
-import formClasses from "../Form.module.css";
-import AuthContext from "../../../store/auth-context";
 import OPTIONS, { OPTIONS_VALUES } from "../../../util/constants";
 
-export default function FilterForm({ isSubmit }) {
+export default function FilterForm({ inputSelectState, setInputSelectState }) {
   return (
     <>
       <Input
@@ -13,8 +9,9 @@ export default function FilterForm({ isSubmit }) {
         label="Brand"
         type="select"
         name="producer"
+        inputSelectState={inputSelectState}
+        setInputSelectState={setInputSelectState}
         options={OPTIONS.producer}
-        isSubmit={isSubmit}
       />
 
       <Input
@@ -22,6 +19,8 @@ export default function FilterForm({ isSubmit }) {
         label="Processor"
         type="select"
         name="processor"
+        inputSelectState={inputSelectState}
+        setInputSelectState={setInputSelectState}
         options={OPTIONS.processor}
       />
 
@@ -47,6 +46,8 @@ export default function FilterForm({ isSubmit }) {
         label="SSD Capacity"
         type="select"
         name="obyom-ssd"
+        inputSelectState={inputSelectState}
+        setInputSelectState={setInputSelectState}
         options={OPTIONS["obyom-ssd"]}
         options_value={OPTIONS_VALUES["obyom-ssd"]}
       />
@@ -92,6 +93,8 @@ export default function FilterForm({ isSubmit }) {
         label="Production Year"
         type="select"
         name="god-vipuska-255456"
+        inputSelectState={inputSelectState}
+        setInputSelectState={setInputSelectState}
         options={OPTIONS["god-vipuska-255456"]}
       />
 
@@ -103,12 +106,6 @@ export default function FilterForm({ isSubmit }) {
         options={OPTIONS["emkost-akkumulyatora-243558"]}
         options_value={OPTIONS_VALUES["emkost-akkumulyatora-243558"]}
       />
-
-      <div className={formClasses["btn-container"]}>
-        <Button type="reset">Reset</Button>
-
-        <Button type="submit">Submit</Button>
-      </div>
     </>
   );
 }

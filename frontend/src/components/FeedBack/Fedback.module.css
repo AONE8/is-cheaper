@@ -1,0 +1,25 @@
+.feedback {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 2rem;
+  margin: 2rem;
+
+  border-radius: 9px;
+}
+
+.reject {
+  color: red;
+  background-color: rgba(255, 116, 116, 0.6);
+}
+
+.load {
+  color: blue;
+  background-color: rgba(128, 128, 255, 0.6);
+}
+
+.nofound {
+  color: orange;
+  background-color: rgba(255, 207, 117, 0.6);
+}
