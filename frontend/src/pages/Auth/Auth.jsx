@@ -90,7 +90,7 @@ export async function action({ request }) {
       password: data.get("password"),
     };
 
-    const response = await fetch(`${REACT_APP_BACKEND_API}/auth/login`, {
+    const response = await fetch(`${import.meta.env.VITE_APP_BACKEND_API}/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -134,7 +134,7 @@ export async function action({ request }) {
       password: data.get("password"),
     };
 
-    const response = await fetch(`${REACT_APP_BACKEND_API}/auth/signup`, {
+    const response = await fetch(`${import.meta.env.VITE_APP_BACKEND_API}/auth/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
