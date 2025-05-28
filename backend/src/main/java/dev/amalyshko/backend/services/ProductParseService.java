@@ -15,17 +15,15 @@ public class ProductParseService {
     public Product parse(String url) throws IOException {
         Document doc = Jsoup.connect(url).get();
 
-        Element productNode = doc.selectFirst("body > rz-app-root > div > div > rz-category > div > main > rz-catalog > div > div > section > rz-grid > ul > li:nth-child(1)");
+        Element productNode = doc.selectFirst("body > rz-app-root > div > div.outlet-wrapper > rz-category > div > main > rz-catalog-layout > div.d-flex > section > rz-category-goods > div:nth-child(1)");
 
-        String productName = productNode.selectFirst("a.product-link.goods-tile__heading").attr("title");
+        String productName = productNode.selectFirst("a.tile-image-host").attr("title");
 
-        String productLocationUrl = productNode.selectFirst("a.product-link.goods-tile__heading").attr("href");
+        String productLocationUrl = productNode.selectFirst("a.tile-image-host").attr("href");
 
-        String productPrice = productNode.selectFirst("span.goods-tile__price-value").text().replaceAll("[^\\d.]", "");
+        String productPrice = productNode.selectFirst("div.price").text().replaceAll("[^\\d.]", "");
 
-        String productImgUrl = productNode.selectFirst("img.ng-lazyloaded").attr("src");
-
-        //System.out.println("Product name: "+ productName + "; Product location: "+productLocationUrl + "; Product price:"+ productPrice+"; Product Img Url:" + productImgUrl);
+        String productImgUrl = productNode.selectFirst("img.tile-image").attr("src");
 
         return new Product(productName, productImgUrl, productLocationUrl, new BigDecimal(productPrice));
     }
