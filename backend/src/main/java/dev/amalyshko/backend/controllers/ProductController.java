@@ -62,9 +62,12 @@ public class ProductController {
             if (statusCode == HttpURLConnection.HTTP_MOVED_PERM || statusCode == HttpURLConnection.HTTP_MOVED_TEMP) {
                 String redirectUrl = response.header("Location");
                 System.out.println("Redirected to: " + redirectUrl);
-                if (Objects.equals(redirectUrl, "/ua/notebooks/c80004/sort=cheap/")) {
+                if (Objects.equals(redirectUrl,
+                        "https://rozetka.com.ua/ua/notebooks/c80004/filter/sort=cheap/")) {
                     return ResponseEntity.status(HttpURLConnection.HTTP_NOT_FOUND).body(new MessageResponse("Product not found"));
                 }
+
+                url = redirectUrl;
             }
 
             Product product = productParseService.parse(url);
